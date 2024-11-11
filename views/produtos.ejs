@@ -1,0 +1,59 @@
+<%- include ('partials/header.ejs') %>
+<%- include ('partials/navbar.ejs') %>
+<div class="container">
+  <div class="card">
+    <div class="card-header">
+      <h1 class="d-flex justify-content-center">Cadastrar produto</h1>
+    </div>
+    <div class="card-body">
+      <form action="/produtos/new" method="post">
+         <label>Url da imagem:</label>
+         <input class="form-control" type="text" name="img" id="img" value="<%= produto.img %>" placeholder="/imgs/nomeDaImagem.extensãoDaImagem" required>
+         
+         <label>Nome do produto:</label>
+         <input class="form-control" type="text" name="nomep" id="nomep" value="<%= produto.nomep %>" placeholder="Insira o nome do produto" required>
+
+         <label>Preço do produto:</label>
+         <input class="form-control" type="text" name="pre" id="pre" value="<%= produto.pre %>" placeholder="Insira o preço do produto" required>
+
+         <label>Categoria do produto:</label>
+         <input class="form-control" type="text" name="cat" id="cat" value="<%= produto.cat %>" placeholder="Insira a categoria do produto" required>
+         <br>
+         <input class="btn btn-success" type="submit" value="Cadastrar">
+      </form>
+    </div>
+  </div>
+</div>
+<div class="container"></div>
+    <div class="card">
+      <div class="card-header">
+        <h1 class="d-flex justify-content-center">Produtos</h1>
+      </div>
+      <div class="card-body">
+        <table class="table table-bordered table-striped">
+            <thead class="table-dark">
+                <tr>
+                    <th scope="col">Imagem</th>
+                    <th scope="col">Nome do Produto</th>
+                    <th scope="col">Preço</th>
+                    <th scope="col">Categoria</th>
+                    <th colspan="2">Ações</th>
+               </tr>
+            </thead>
+            <tbody>        
+                <tr>
+                    <% produto.forEach((pro) => { %>
+                        <th scope="row"><img src="<%= pro.img %>" alt="" id="imagem" class="align-middle"></th>
+                        <td class="align-middle"><%= pro.nomep %></td>
+                        <td class="align-middle">R$<%= pro.pre %></td>
+                        <td class="align-middle"><%= pro.cat %></td>
+                        <td class="align-middle"><a href="/produtos/edit/<%= pro.id %>">Editar</a></td>
+                        <td class="align-middle"><a onclick="return confirm('Deseja realmente deletar o produto <%= pro.nomep %>?')" href="/produtos/delete/<%= pro.id %>">Deletar</a></td>
+                </tr>
+            <% })%>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+<%- include ('partials/footer.ejs') %>

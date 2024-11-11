@@ -1,0 +1,49 @@
+<%- include ('partials/header.ejs') %>
+<%- include ('partials/navbar.ejs') %>
+<div class="container">
+  <div class="card">
+    <div class="card-header">
+      <h1 class="d-flex justify-content-center">Cadastrar pedido</h1>
+    </div>
+    <div class="card-body">
+      <form action="/pedidos/new" method="post">
+        <label>Digite o número do pedido:</label>
+        <input class="form-control" type="text" name="nump" id="nump" placeholder="Insira o número do pedido" required>
+
+        <label>Valor do pedido R$</label>
+        <input class="form-control" type="text" name="valor" id="valor" placeholder="Insira o valor do pedido" required>
+        <br>
+        <input class="btn btn-success" type="submit" value="Cadastrar">
+      </form>
+    </div>
+  </div>
+</div>
+<div class="container">
+    <div class="card">
+      <div class="card-header">
+        <h1 class="d-flex justify-content-center">Pedidos</h1>
+      </div>
+      <div class="card-body">
+        <table class="table table-bordered table-striped">
+            <thead class="table-dark">
+                <tr>
+                    <th scope="col">Número do pedido</th>
+                    <th scope="col">Valor</th>
+                    <th colspan="2">Ações</th>
+                </tr>
+            </thead>
+            <tbody>        
+                <tr>
+                    <% pedido.forEach((ped) => { %>
+                        <td><%= ped.nump %></td>
+                        <td>R$<%= ped.valor %></td>
+                        <td><a href="/pedidos/edit/<%= ped.id %>">Editar</a></td>
+                        <td><a onclick="return confirm('Deseja realmente deletar o pedido <%= ped.nump%>?')" href="/pedidos/delete/<%= ped.id %>">Deletar</a></td>
+                </tr>
+            <% })%>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+<%- include ('partials/footer.ejs') %>

@@ -1,0 +1,58 @@
+:root{
+   --cor1: #014040;
+   --cor2: #02735E;
+   --cor3: #BF6415;
+   --cor4: #03A678;
+   --cor5: #731702;
+}
+
+header,footer{
+    background-color: var(--cor1);
+}
+
+nav{
+    background-color: var(--cor2);
+}
+
+#link{
+    color: #f1f1f1;
+}
+
+footer{
+    color: #f1f1f1;
+}
+
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+body{
+    background-image: linear-gradient(to top,#99e7d9,#748884);
+    background-repeat: no-repeat;
+    background-size: cover;
+
+}
+
+main{
+    background-color: #D8FFDB;
+}
+
+main p{
+    padding: 0px 100px 0px 100px;
+}
+
+#titulo{
+
+    margin-top: 2vh;
+    color: #f1f1f1;
+}
+
+#imagem{
+    width: 5vw;
+}
+
+#imge{
+
+    width: 30%;
+}

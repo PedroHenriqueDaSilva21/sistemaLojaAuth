@@ -1,0 +1,33 @@
+<%- include('partials/header.ejs') %>
+<%- include('partials/navbar.ejs') %>
+<div class="container">
+    <div class="card">
+        <div class="card-header">
+            <h1 class="d-flex justify-content-center">Alterar produto</h1>
+        </div>
+        <div class="card-body">
+            <form action="/produtos/update" method="post">
+               <input type="hidden" name="id" value="<%= produto.id %>" >
+
+               <label>Imagem do produto:</label>
+               <img src="<%=produto.img%>" id="imagem" class="align-middle">
+
+               <br>
+               <label>Url da imagem:</label>
+               <input class="form-control" type="text" name="img" id="img" value="<%= produto.img%>" required>
+
+               <label>Nome do produto:</label>
+               <input class="form-control" type="text" name="nomep" id="nomep" value="<%= produto.nomep %>" required>
+
+               <label>Preço do produto:</label>
+               <input class="form-control" type="text" name="pre" id="pre" value="<%= produto.pre %>" required>
+
+               <label>Categoria do produto:</label>
+               <input class="form-control" type="text" name="cat" id="cat" value="<%= produto.cat %>" required>
+               <br>
+               <input class="btn btn-success" type="submit" value="Alterar" onclick="return confirm('Deseja realmente alterar o produto <%= produto.nomep%>?')">
+            </form>
+        </div>
+    </div>
+</div>
+<%- include('partials/footer.ejs') %>
